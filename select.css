@@ -2,47 +2,34 @@ body {
   font-family: sans-serif;
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 24px 16px;
 }
 
-/* 青色ゾーン（直前問題） */
-#history {
-  background: #2a4d9b;
-  color: #fff;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  min-height: 3em;
-}
-#history-eng {
-  font-size: 18px;
-}
-#history-jp {
-  font-size: 16px;
-  opacity: 0.85;
-}
-
-/* 英単語 */
+/* 英単語（中央上部・主役） */
 #question {
   font-size: min(10vw, 96px);
-  margin: 20px 0;
+  margin: 24px 0 32px;
+  line-height: 1.2;
 }
 
-/* 選択肢 */
+/* 選択肢全体 */
 .choices-column {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 14px;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 680px;
+  margin: 0 auto 28px;
 }
 
+/* 横長・角丸・白地＋青枠 */
 .choice {
-  font-size: min(4.5vw, 32px);
-  padding: 16px;
+  width: 100%;
+  font-size: min(4.5vw, 30px);
+  padding: 18px 20px;
   border: 2px solid #2a4d9b;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #fff;
+  color: #2a4d9b;
   cursor: pointer;
 
   display: flex;
@@ -51,7 +38,23 @@ body {
 }
 
 .choice:hover {
-  background: #f0f0f0;
+  background: #f4f7ff;
+}
+
+/* 前問ログ（青色コーナー） */
+#history {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  background: #2a4d9b;
+  color: #fff;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 18px;
+  min-height: 1.6em;
 }
 
 /* 正誤オーバーレイ */
@@ -70,7 +73,12 @@ body {
 
 /* スマホ */
 @media (max-width: 480px) {
-  .choices-column {
-    grid-template-columns: 1fr;
+  .choice {
+    font-size: 22px;
+    padding: 16px;
+  }
+
+  #history {
+    font-size: 16px;
   }
 }
