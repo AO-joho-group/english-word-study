@@ -2,26 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>英→日（選択式）</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>English Word App</title>
   <link rel="stylesheet" href="select.css">
 </head>
 <body>
 
-  <h1>英→日（選択式）</h1>
+  <!-- 直前問題ログ（青ゾーン） -->
+  <div id="history">
+    <div id="history-eng"></div>
+    <div id="history-jp"></div>
+  </div>
 
   <!-- 英単語 -->
-  <div id="question">loading...</div>
+  <div id="question">Loading...</div>
 
   <!-- 選択肢 -->
   <div id="choices" class="choices-column"></div>
 
-  <!-- 正誤表示 -->
-  <div id="result"></div>
-
-  <!-- 次へ -->
-  <button id="nextBtn">次の問題</button>
+  <!-- 正誤オーバーレイ -->
+  <div id="overlay"></div>
 
   <script src="select.js"></script>
 </body>
