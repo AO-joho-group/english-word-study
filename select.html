@@ -1,19 +1,144 @@
-<style>
-  body { background: red !important; }
-</style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quiz</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #fff;
+    }
+
+    #app {
+      min-height: 100svh;
+      padding: 32px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 問題 */
+    #question {
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+      margin: 24px 0;
+    }
+
+    /* 選択肢 */
+    .choices-column {
+      width: 100%;
+      max-width: 420px;
+      margin: auto 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .choice {
+      font-size: 22px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 2px solid #2a4d9b;
+      background: #fff;
+      color: #2a4d9b;
+    }
+
+    /* 下固定・青コーナー */
+    #history {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+
+      width: calc(100% - 64px);
+      max-width: 420px;
+
+      padding: 12px;
+      border-radius: 12px;
+      background: #2a4d9b;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* オーバーレイ */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+    }
+  </style>
+</head>
 
 <body>
   <div id="app">
     <div id="question">Loading...</div>
     <div id="choices" class="choices-column"></div>
-    <div id="history">
-      <span id="history-eng"></span>
-      <span>｜</span>
-      <span id="history-jp"></span>
-    </div>
   </div>
 
+  <div id="history"></div>
   <div id="overlay"></div>
 
-  <script src="select.js"></script>
+  <script>
+    const words = [
+      { eng: "apple", jp: "りんご" },
+      { eng: "run", jp: "走る" },
+      { eng: "blue", jp: "青い" },
+      { eng: "book", jp: "本" },
+      { eng: "eat", jp: "食べる" }
+    ];
+
+    const q = document.getElementById("question");
+    const c = document.getElementById("choices");
+    const h = document.getElementById("history");
+    const o = document.getElementById("overlay");
+
+    function shuffle(a) {
+      return a.sort(() => Math.random() - 0.5);
+    }
+
+    function show() {
+      const w = words[Math.floor(Math.random() * words.length)];
+      q.textContent = w.eng;
+
+      const choices = shuffle([
+        w.jp,
+        ...shuffle(words.filter(x => x.jp !== w.jp)).slice(0, 3).map(x => x.jp)
+      ]);
+
+      c.innerHTML = "";
+      choices.forEach(jp => {
+        const b = document.createElement("button");
+        b.className = "choice";
+        b.textContent = jp;
+        b.onclick = () => judge(jp === w.jp, w);
+        c.appendChild(b);
+      });
+    }
+
+    function judge(ok, w) {
+      o.textContent = ok ? "正解" : "不正解";
+      o.style.display = "flex";
+      h.textContent = `${w.eng} ｜ ${w.jp}`;
+
+      setTimeout(() => {
+        o.style.display = "none";
+        show();
+      }, 700);
+    }
+
+    show();
+  </script>
 </body>
+</html>
