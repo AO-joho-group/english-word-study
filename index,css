@@ -1,10 +1,14 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+body {
   background: #ffffff;
   font-family: sans-serif;
 
-  height: 100vh;
+  min-height: 100svh;   /* ← 重要（スマホ対応） */
   display: flex;
   justify-content: center;
   align-items: center;
