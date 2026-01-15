@@ -1,99 +1,78 @@
-html, body {
+/* 全体リセット */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* 画面全体 */
 body {
+  width: 100vw;
+  height: 100vh;
   font-family: sans-serif;
-  background: #ffffff;
+  overflow: hidden;
 }
 
-/* 全体 */
-#app {
-  min-height: 100svh;
-  padding: 32px;
-
+/* メインコンテナ（問題＋選択肢側） */
+#container {
+  width: 100%;
+  height: 70vh;              /* 青コーナー以外の領域 */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-/* 問題文（下に2倍ずらす） */
+/* 問題文 */
 #question {
-  width: 100%;
+  font-size: 5rem;           /* 文字5倍 */
   text-align: center;
-
-  font-size: 48px;
-  line-height: 1.2;
-
-  margin-top: 48px;    /* ← ずらし（基準の約2倍） */
-  margin-bottom: 24px;
+  margin-bottom: 4vh;        /* 問題を少し下にずらす */
 }
 
-/* 選択肢全体（縦1.5倍） */
-.choices-column {
-  width: 100%;
-  max-width: 420px;
-
-  margin: auto 0;
-
+/* 選択肢全体 */
+#choices {
+  width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 24px;           /* 16px ×1.5 */
+  gap: 3vh;                  /* 縦方向1.5倍相当 */
 }
 
-/* 選択肢ボタン（縦1.5倍） */
+/* 選択肢ボタン */
 .choice {
   width: 100%;
-
-  font-size: 22px;
-  padding: 24px 16px;  /* 縦だけ1.5倍 */
-
-  border-radius: 14px;
-  border: 2px solid #2a4d9b;
-  background: #fff;
-  color: #2a4d9b;
-
+  padding: 2.5vh 0;
+  font-size: 3rem;
   text-align: center;
+  border-radius: 12px;
+  background-color: #f0f0f0;
 }
 
-/* 青コーナー（下中央固定・サイズ固定） */
-#history {
+/* ========================= */
+/* 青コーナー（下固定） */
+/* ========================= */
+
+#blue-corner {
   position: fixed;
+  bottom: 0;
   left: 50%;
-  bottom: 24px;
   transform: translateX(-50%);
 
-  width: calc(100% - 64px);
-  max-width: 420px;
+  width: 100%;
+  height: 30vh;              /* ← 画面高さ基準・常に固定 */
 
-  padding: 12px;
-  min-height: 48px;        /* ← 大きさ固定 */
+  background-color: #2f6fff;
 
-  display: flex;          /* 中央揃え */
+  display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 12px;
-  background: #2a4d9b;
-  color: #fff;
-
-  font-size: 14px;
-  text-align: center;
 }
 
-/* 正誤オーバーレイ */
-#overlay {
-  position: fixed;
-  inset: 0;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 64px;
-  font-weight: bold;
-
-  background: rgba(0, 0, 0, 0.45);
-  color: #ffffff;
+/* 青コーナー内の単語表示 */
+#word-display {
+  font-size: 5rem;
+  line-height: 1.2;
+  min-height: 1.2em;         /* ← 空でも高さを保持 */
+  color: white;
+  text-align: center;
 }
