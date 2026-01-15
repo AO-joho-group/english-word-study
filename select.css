@@ -12,13 +12,12 @@ body {
 #app {
   min-height: 100svh;
 
-  /* 縦4倍 */
   padding: 64px;
+  padding-bottom: 320px; /* ← 青コーナー分の逃げ */
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center;        /* 横中央固定 */
 }
 
 /* 問題文 */
@@ -26,65 +25,60 @@ body {
   width: 100%;
   text-align: center;
 
-  /* フォント5倍 */
   font-size: 200px;
   line-height: 1.2;
 
-  /* 縦4倍 */
   margin-bottom: 128px;
 }
 
 /* 選択肢全体 */
 .choices-column {
   width: 100%;
-
-  /* 横1.5倍 */
   max-width: 900px;
+
+  margin-left: auto;   /* ← 念押し中央寄せ */
+  margin-right: auto;
 
   display: flex;
   flex-direction: column;
-
-  /* 縦4倍 */
   gap: 56px;
 }
 
-/* 選択肢ボタン */
+/* 選択肢 */
 .choice {
   width: 100%;
 
-  /* フォント5倍 */
   font-size: 150px;
-
-  /* 横1.5倍 / 縦4倍 */
   padding: 80px 60px;
 
   border: 6px solid #2a4d9b;
   border-radius: 32px;
-
   background: #fff;
   color: #2a4d9b;
+
+  text-align: center;
 }
 
-/* 青コーナー */
+/* 青コーナー：画面下・中央固定 */
 #history {
-  width: 100%;
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
 
-  /* 横1.5倍 */
+  width: calc(100% - 128px);
   max-width: 900px;
 
-  /* 縦4倍 */
   padding: 64px;
-  margin-top: 128px;
 
   background: #2a4d9b;
   color: #fff;
-
   border-radius: 32px;
 
   text-align: center;
-
-  /* フォント5倍 */
   font-size: 80px;
+
+  z-index: 10;
 }
 
 /* 正誤オーバーレイ */
@@ -96,9 +90,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  /* フォント5倍 */
   font-size: 240px;
 
   background: rgba(0,0,0,0.45);
   color: #fff;
+  z-index: 100;
 }
