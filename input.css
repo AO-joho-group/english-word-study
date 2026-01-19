@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4vh;
+}
+
+/* 日本語問題 */
+#question-jp {
+  font-size: 5rem;
+  text-align: center;
+}
+
+/* 入力欄 */
+#answer {
+  width: 80%;
+  font-size: 3rem;
+  padding: 1vh;
+  text-align: center;
+}
+
+/* 判定ボタン */
+#check {
+  font-size: 2.5rem;
+  padding: 1vh 4vw;
+}
+
+/* 結果表示（高さ固定） */
+#result {
+  font-size: 3rem;
+  min-height: 1.2em;
+  font-weight: bold;
+}
+
+.correct {
+  color: #2e7d32;
+}
+
+.incorrect {
+  color: #c62828;
+}
+
+/* 下部青コーナー（高さ不変） */
+#history {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  height: 25vh;
+
+  background: #2a4d9b;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  font-size: 3rem;
+}
