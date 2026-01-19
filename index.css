@@ -17,15 +17,25 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 60vw;        /* 画面の5分の3 */
-  aspect-ratio: 3 / 1; /* 横3 : 縦1 */
+  width: 60vw;
+  aspect-ratio: 3 / 1;
 
   background-color: #2f80ed;
   color: white;
   text-decoration: none;
 
-  font-size: 4rem;    /* ← Start文字 4倍 */
+  font-size: 4rem;
   font-weight: bold;
 
   border-radius: 20px;
+
+  /* ここを追加 */
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Meiryo",
+    sans-serif;
 }
