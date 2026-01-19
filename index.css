@@ -1,35 +1,31 @@
-/* 画面全体 */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-/* 中央配置用 */
-.container {
-  height: 100%;
+body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 
-/* STARTボタン */
-#start-button {
-  width: 60vw;          /* 画面の5分の3 */
-  max-width: 600px;     /* PCでデカくなりすぎない制限 */
-  aspect-ratio: 3 / 1; /* 横3：縦1 */
-  
-  background-color: #1e6cff;
+/* Startボタン */
+.start-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 60vw;        /* 画面の5分の3 */
+  aspect-ratio: 3 / 1; /* 横3 : 縦1 */
+
+  background-color: #2f80ed;
   color: white;
-  font-size: 32px;
+  text-decoration: none;
+
+  font-size: 4rem;    /* ← Start文字 4倍 */
   font-weight: bold;
-  border: none;
+
   border-radius: 20px;
-
-  cursor: pointer;
-}
-
-/* 押したとき */
-#start-button:active {
-  transform: scale(0.98);
 }
