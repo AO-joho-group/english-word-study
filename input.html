@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入力形式</title>
+  <link rel="stylesheet" href="input.css">
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- 問題 -->
+    <div id="question-jp"></div>
+
+    <!-- 入力欄 -->
+    <input
+      id="answer"
+      type="text"
+      placeholder="英単語を入力"
+      autocomplete="off"
+    >
+
+    <!-- 判定ボタン -->
+    <button id="check">判定</button>
+
+    <!-- 結果表示（高さ固定） -->
+    <div id="result"></div>
+
+    <!-- 下部固定ログ（高さ不変） -->
+    <div id="history">
+      <span id="history-eng">&nbsp;</span>
+      <span>｜</span>
+      <span id="history-jp">&nbsp;</span>
+    </div>
+
+  </div>
+
+  <!-- 単語データ（共通化前提） -->
+  <script src="words.js"></script>
+  <script src="input.js"></script>
+</body>
+</html>
