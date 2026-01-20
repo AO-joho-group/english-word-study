@@ -1,14 +1,19 @@
-const startBtn = document.getElementById("start");
-const modeSelect = document.getElementById("mode-select");
+window.addEventListener("DOMContentLoaded", () => {
+  const checkBtn = document.getElementById("check");
+  const answerInput = document.getElementById("answer");
 
-startBtn.addEventListener("click", () => {
-  startBtn.style.display = "none";
-  modeSelect.classList.remove("hidden");
-});
+  if (!checkBtn || !answerInput) {
+    console.error("HTMLとJSのIDが一致していない");
+    return;
+  }
 
-document.querySelectorAll(".mode").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.target;
-    window.location.href = target;
+  checkBtn.addEventListener("click", () => {
+    console.log("判定ボタンが押された");
+  });
+
+  answerInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      console.log("Enterキー");
+    }
   });
 });
