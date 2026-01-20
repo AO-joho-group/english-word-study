@@ -1,11 +1,19 @@
-console.log("input js loaded");
-
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("dom content loaded");
-
   const checkBtn = document.getElementById("check");
-  const answer = document.getElementById("answer");
+  const answerInput = document.getElementById("answer");
 
-  console.log("check:", checkBtn);
-  console.log("answer:", answer);
+  if (!checkBtn || !answerInput) {
+    console.error("HTMLとJSのIDが一致していない");
+    return;
+  }
+
+  checkBtn.addEventListener("click", () => {
+    console.log("判定ボタンが押された");
+  });
+
+  answerInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      console.log("Enterキー");
+    }
+  });
 });
