@@ -19,35 +19,25 @@ body {
   gap: 6vh;
 }
 
-/* タイトル */
-#title {
+#question-jp {
   font-size: 4rem;
-  text-align: center;
 }
 
-/* STARTボタン */
-#start {
-  font-size: 3rem;
-  padding: 1.5vh 10vw;
+#answer {
+  font-size: 2.5rem;
 }
 
-/* 形式選択 */
-#mode-select {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 3vh;
+#check {
+  font-size: 2rem;
 }
 
-/* 横長ボタン3段 */
-.mode {
-  width: 100%;
-  font-size: 3rem;
-  padding: 2.5vh 0;
-  border-radius: 12px;
+#result {
+  height: 3rem;
+  font-size: 2rem;
 }
 
-/* 非表示 */
-.hidden {
-  display: none;
+#history {
+  position: fixed;
+  bottom: 4vh;
+  font-size: 2rem;
 }
