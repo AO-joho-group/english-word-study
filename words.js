@@ -1,8 +1,5 @@
-// words.js
-window.words = [
-  ["apple", "りんご"],
-  ["run", "走る"],
-  ["blue", "青い"],
-  ["book", "本"],
-  ["eat", "食べる"]
+window.WORDS = [
+  { en: "apple", jp: "りんご" },
+  { en: "book", jp: "本" },
+  { en: "study", jp: "勉強する" }
 ];
