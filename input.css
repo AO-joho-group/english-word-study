@@ -10,34 +10,55 @@ body {
   font-family: sans-serif;
 }
 
+/* 全体レイアウト */
 #app {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6vh;
+  gap: 5vh;
 }
 
+/* 日本語（問題） */
 #question-jp {
-  font-size: 4rem;
+  font-size: 3rem;
+  text-align: center;
 }
 
+/* 入力欄（サイズを2/3に縮小） */
 #answer {
-  font-size: 2.5rem;
+  width: 66%;
+  font-size: 1.6rem;
+  padding: 0.8rem;
+  text-align: center;
 }
 
+/* 判定ボタン（角なし・青四角） */
 #check {
-  font-size: 2rem;
+  background: #2a4d9b;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-size: 1.8rem;
+  padding: 1.2vh 6vw;
+  cursor: pointer;
 }
 
+/* 結果表示 */
 #result {
-  height: 3rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  min-height: 1.6em; /* 表示有無でガタつかせない */
+  text-align: center;
 }
 
+/* 下部の前問ログ（青背景・高さ固定） */
 #history {
-  position: fixed;
-  bottom: 4vh;
-  font-size: 2rem;
+  background: #2a4d9b;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  padding: 1vh 2vw;
+  font-size: 1.2rem;
 }
