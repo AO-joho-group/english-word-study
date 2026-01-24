@@ -1,18 +1,21 @@
-if (!window.WORDS || window.WORDS.length === 0) {
+if (!window.words || window.words.length === 0) {
   alert("words.js が読み込まれていません");
 }
+
+// シャッフル済み単語
+const words = [...window.words].sort(() => Math.random() - 0.5);
 
 let index = 0;
 let showEnglish = true;
 
-// シャッフル
-const words = [...window.WORDS].sort(() => Math.random() - 0.5);
-
 const wordEl = document.getElementById("word");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 
 function render() {
+  if (!wordEl || words.length === 0) return;
   const w = words[index];
-  wordEl.textContent = showEnglish ? w.en : w.jp;
+  wordEl.textContent = showEnglish ? w[0] : w[1];
 }
 
 function next() {
@@ -27,25 +30,15 @@ function prev() {
   render();
 }
 
-// クリック / タップで切替
+// タップで英⇄日
 wordEl.addEventListener("click", () => {
   showEnglish = !showEnglish;
   render();
 });
 
-// キー操作
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight" || e.key === "Enter") next();
-  if (e.key === "ArrowLeft") prev();
-  if (e.key === " ") {
-    e.preventDefault();
-    showEnglish = !showEnglish;
-    render();
-  }
-});
+// ボタン操作
+nextBtn.addEventListener("click", next);
+prevBtn.addEventListener("click", prev);
 
+// 初期表示
 render();
-
-document.getElementById("next").addEventListener("click", next);
-document.getElementById("prev").addEventListener("click", prev);
-
