@@ -48,11 +48,28 @@ body {
   padding: 0.8rem;
 }
 
+
 #check {
   margin-top: 1vh;
-  font-size: 1.2rem;
-  padding: 0.6rem 2rem;
+  font-size: 2rem;          /* ← 大きさアップ（約2倍） */
+  padding: 1.2rem 3rem;     /* ← ボタン自体も縦横大きめに */
+
+  background: #ffffff;      /* ← 白背景 */
+  color: #2a4d9b;           /* ← 青文字（historyバーと統一） */
+  border: 3px solid #2a4d9b;/* ← 青ボーダー */
+  border-radius: 8px;       /* ← 少し丸みを追加（任意） */
+
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
 }
+
+/* ホバー時の反応 */
+#check:hover {
+  background: #e8f0ff;      /* うっすら青背景 */
+}
+``
+
 
 #result {
   margin-top: 0.8vh;
