@@ -48,33 +48,14 @@ body {
   padding: 0.8rem;
 }
 
-/* 判定ボタン（角なし・白背景・青枠・青文字・大） */
 #check {
-  margin-top: 1.5vh;
-
-  font-size: 2.2rem;        /* しっかり大きく */
-  padding: 1.4rem 4rem;     /* タップ前提で余裕 */
-
-  background: #ffffff;
-  color: #2a4d9b;
-
-  border: 3px solid #2a4d9b;
-  border-radius: 0;         /* ← 角なし四角 */
-
-  font-weight: bold;
-  cursor: pointer;
-
-  transition: background 0.15s, transform 0.05s;
-}
-
-/* スマホ向け押下時フィードバック */
-#check:active {
-  background: #e8f0ff;
-  transform: scale(0.98);
+  margin-top: 1vh;
+  font-size: 1.2rem;
+  padding: 0.6rem 2rem;
 }
 
 #result {
-  margin-top: 1vh;
+  margin-top: 0.8vh;
   font-size: 1rem;
   min-height: 1.2em;
 }
