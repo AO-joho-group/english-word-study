@@ -24,6 +24,21 @@ body {
   padding: 0 5vw;
 }
 
+#controls {
+  display: flex;
+  gap: 24px;
+}
+
+#controls button {
+  font-size: 2rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #2a4d9b;
+  color: #fff;
+}
+
+
 #hint {
   font-size: 1rem;
   color: #666;
