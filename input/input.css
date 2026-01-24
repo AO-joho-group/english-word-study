@@ -1,64 +1,80 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  width: 100vw;
+  margin: 0;
   height: 100vh;
   font-family: sans-serif;
+  position: relative;
 }
 
-/* 全体レイアウト */
-#app {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5vh;
+/* 単語表示（中央やや上） */
+#word-area {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
 }
 
-/* 日本語（問題） */
 #question-jp {
-  font-size: 3rem;
-  text-align: center;
-}
-
-/* 入力欄（サイズを2/3に縮小） */
-#answer {
-  width: 66%;
-  font-size: 1.6rem;
-  padding: 0.8rem;
-  text-align: center;
-}
-
-/* 判定ボタン（角なし・青四角） */
-#check {
-  background: #2a4d9b;
-  color: #ffffff;
-  border: none;
-  border-radius: 0;
   font-size: 1.8rem;
-  padding: 1.2vh 6vw;
-  cursor: pointer;
+  color: #444;
+  margin-bottom: 1vh;
+  white-space: nowrap;
 }
 
-/* 結果表示 */
-#result {
-  font-size: 1.6rem;
+#question-en {
+  font-size: 3rem;
   font-weight: bold;
-  min-height: 1.6em; /* 表示有無でガタつかせない */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 入力エリア（固定） */
+#input-area {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
   text-align: center;
 }
 
-/* 下部の前問ログ（青背景・高さ固定） */
-#history {
-  background: #2a4d9b;
-  color: #ffffff;
+#answer {
   width: 100%;
-  text-align: center;
-  padding: 1vh 2vw;
+  font-size: 1.4rem;
+  padding: 0.8rem;
+}
+
+#check {
+  margin-top: 1vh;
   font-size: 1.2rem;
+  padding: 0.6rem 2rem;
+}
+
+#result {
+  margin-top: 0.8vh;
+  font-size: 1rem;
+}
+
+/* 下固定の青履歴バー */
+#history {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+
+  background: #2a4d9b;
+  color: #fff;
+  font-size: 1.1rem;
 }
