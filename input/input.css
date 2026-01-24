@@ -1,18 +1,41 @@
+
+/* ================================
+   スマホ最適化・ベース設定
+   ================================ */
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.08); /* タップ時のハイライトを控えめに */
 }
 
-body {
+html, body {
   margin: 0;
-  height: 100vh;
-  font-family: sans-serif;
-  position: relative;
+  -webkit-text-size-adjust: 100%; /* iOS が勝手に文字拡大しない */
 }
 
-/* 単語表示（中央やや上） */
+/* ▼ 全体レイアウトの下方向オフセット（ここを変えると全体の上下バランスを簡単に調整可能） */
+:root {
+  --offset: 6vh; /* 例：6vh → ちょっと下へ。8vh/10vhなど好みで調整OK */
+}
+
+/* ================================
+   本文
+   ================================ */
+body {
+  height: 100svh; /* iOS 15+ の安全なビューポート */
+  height: 100vh;  /* フォールバック */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  position: relative;
+  color: #111;
+  background: #fff;
+}
+
+/* ================================
+   単語表示（中央やや下に調整）
+   ================================ */
 #word-area {
   position: absolute;
-  top: 26%;
+  /* 元: top: 26%; → オフセットを足して全体を下げる */
+  top: calc(26% + var(--offset));
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
@@ -21,8 +44,11 @@ body {
 
 /* 英語（上） */
 #question-en {
-  font-weight: bold;
+  font-weight: 800;
   white-space: nowrap;
+  /* 端末幅に応じてスケール */
+  font-size: clamp(20px, 6vw, 42px);
+  line-height: 1.15;
 }
 
 /* 日本語（下） */
@@ -30,50 +56,120 @@ body {
   margin-top: 1vh;
   color: #444;
   white-space: nowrap;
+  font-size: clamp(16px, 4.5vw, 28px);
+  line-height: 1.2;
 }
 
-/* 入力エリア（位置固定） */
+/* ================================
+   入力エリア（固定）
+   ================================ */
 #input-area {
   position: absolute;
-  top: 52%;
+  /* 元: top: 52% → オフセットを足して下寄せ */
+  top: calc(52% + var(--offset));
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: min(640px, 86%);
   text-align: center;
 }
 
+/* 入力欄：iOSズーム防止で16px以上、触りやすく */
 #answer {
   width: 100%;
-  font-size: 1.4rem;
-  padding: 0.8rem;
+  font-size: 18px;            /* 16px以上推奨（iOSの自動ズーム防止） */
+  padding: 0.9rem 0.8rem;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  outline: none;
 }
 
+#answer:focus {
+  border-color: #2a4d9b;
+  box-shadow: 0 0 0 3px rgba(42,77,155,0.15);
+}
+
+/* ================================
+   判定ボタン（白背景 / 青枠 / 青文字、サイズ約2倍）
+   ================================ */
 #check {
-  margin-top: 1vh;
-  font-size: 1.2rem;
-  padding: 0.6rem 2rem;
+  margin-top: 1.2vh;
+  font-size: 2rem;                 /* 約2倍 */
+  padding: 1.1rem 3rem;            /* タップしやすい大きさ */
+  min-height: 56px;                /* 指で押しやすい高さ確保 */
+  min-width: 56px;
+
+  background: #ffffff;             /* 白背景 */
+  color: #2a4d9b;                  /* 青文字 */
+  border: 3px solid #2a4d9b;       /* 青枠 */
+  border-radius: 12px;             /* 少し丸み */
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: transform 0.08s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 0 rgba(42,77,155,0.25);
 }
 
+#check:hover {
+  background: #f7fbff;             /* PC操作時の軽めの反応（スマホではほぼ無効） */
+}
+
+#check:active {
+  transform: translateY(1px);      /* 押し込み感 */
+  background: #f5f9ff;
+  box-shadow: 0 1px 0 rgba(42,77,155,0.25);
+}
+
+/* ボタン無効化（判定直後の連打防止に対応） */
+#check:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================================
+   判定結果（10倍＆太字、配色はJS側で切替）
+   ================================ */
 #result {
-  margin-top: 0.8vh;
-  font-size: 1rem;
-  min-height: 1.2em;
+  margin-top: 1.2vh;
+  /* 元: 1rem → 約10倍相当。端末幅に応じて可変 */
+  font-size: clamp(28px, 10vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  min-height: 1.2em; /* 行の高さ確保で画面ブレ抑止 */
+  text-align: center;
 }
 
-/* 下固定の青履歴バー */
+/* ================================
+   下固定の青履歴バー（ノッチ配慮）
+   ================================ */
 #history {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10vh;
+
+  /* 端末に応じて高さ可変＋ホームインジケータ領域を確保 */
+  height: clamp(56px, 10svh, 96px);
+  padding-bottom: env(safe-area-inset-bottom, 0);
 
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1vw;
+  gap: 3vw;
 
   background: #2a4d9b;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: clamp(14px, 1.1rem, 20px);
+}
+
+/* ================================
+   （任意）超小型端末での微調整
+   ================================ */
+@media (max-width: 360px) {
+  :root {
+    --offset: 5vh; /* ほんの少しだけオフセットを抑える */
+  }
+  #check {
+    font-size: 1.8rem;
+    padding: 1rem 2.6rem;
+  }
 }
