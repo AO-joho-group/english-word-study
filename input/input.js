@@ -1,4 +1,22 @@
-// 読み込み確認
+console.log("input.js loaded");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const jpEl = document.getElementById("question-jp");
+  const enEl = document.getElementById("question-en");
+
+  // テスト用ダミー
+  const testWord = {
+    en: "ENGLISH",
+    jp: "日本語"
+  };
+
+  jpEl.textContent = testWord.jp;
+  enEl.textContent = testWord.en;
+
+  console.log("word rendered");
+});
+
+/*// 読み込み確認
 alert("input.js loaded");
 
 // 要素取得
