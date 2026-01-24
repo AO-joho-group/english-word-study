@@ -12,9 +12,24 @@ const wordEl = document.getElementById("word");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 
+/* フォント自動調整（1行固定） */
+function fitText() {
+  const MAX = 64; // px
+  const MIN = 28; // px
+
+  let size = MAX;
+  wordEl.style.fontSize = size + "px";
+
+  while (wordEl.scrollWidth > wordEl.clientWidth && size > MIN) {
+    size -= 2;
+    wordEl.style.fontSize = size + "px";
+  }
+}
+
 function render() {
   const w = words[index];
   wordEl.textContent = showEnglish ? w.eng : w.jp;
+  fitText();
 }
 
 function next() {
@@ -29,7 +44,7 @@ function prev() {
   render();
 }
 
-// 単語タップで切替
+// 単語タップで 英語⇔日本語
 wordEl.addEventListener("click", () => {
   showEnglish = !showEnglish;
   render();
