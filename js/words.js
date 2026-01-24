@@ -1,22 +1,4 @@
 window.WORDS = [
-  { eng: "sure", jp: "確信して" },
-  { eng: "fast", jp: "速い" },
-  { eng: "hand", jp: "手" },
-  { eng: "snow", jp: "雪" },
-  { eng: "cool", jp: "涼しい" },
-  { eng: "life", jp: "生活" },
-  { eng: "sleep", jp: "眠る" },
-  { eng: "run", jp: "走る" },
-  { eng: "choose", jp: "選ぶ" },
-  { eng: "listen", jp: "聞く" },
-  { eng: "write", jp: "書く" },
-  { eng: "read", jp: "読む" },
-  { eng: "come", jp: "来る" },
-  { eng: "make", jp: "作る" },
-  { eng: "think", jp: "考える" },
-  { eng: "use", jp: "使う" },
-  { eng: "walk", jp: "歩く" },
-  { eng: "eat", jp: "食べる" },
-  { eng: "drink", jp: "飲む" },
-  { eng: "study", jp: "勉強する" }
+  { eng: "international", jp: "国際的な" },
+
 ];
