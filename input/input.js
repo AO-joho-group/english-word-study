@@ -19,26 +19,26 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function showWord() {
-    current = pickWord();
-
-    // ★ ここが本質
-    enEl.textContent = current.eng;
+    current = WORDS[Math.floor(Math.random() * WORDS.length)];
+  
+    enEl.textContent = current.en;   // ← 修正
     jpEl.textContent = current.jp;
-
+  
     answerInput.value = "";
     resultEl.textContent = "";
   }
 
+
   function judge() {
     const input = answerInput.value.trim().toLowerCase();
-    const correct = current.eng.toLowerCase();
-
+    const correct = current.en.toLowerCase(); // ← ここも en
+  
     resultEl.textContent =
-      input === correct ? "正解" : `正解：${current.eng}`;
-
-    historyEn.textContent = current.eng;
+      input === correct ? "正解" : `正解：${current.en}`;
+  
+    historyEn.textContent = current.en;
     historyJp.textContent = current.jp;
-
+  
     setTimeout(showWord, 900);
   }
 
