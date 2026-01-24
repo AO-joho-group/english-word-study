@@ -1,12 +1,18 @@
 console.log("input.js loaded");
 
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM ready");
-
   if (!window.WORDS || WORDS.length === 0) {
-    alert("WORDS not found");
+    alert("words.js が読み込まれていません");
     return;
   }
+
+  const enEl = document.getElementById("question-en");
+  const jpEl = document.getElementById("question-jp");
+  const answerEl = document.getElementById("answer");
+  const checkBtn = document.getElementById("check");
+  const resultEl = document.getElementById("result");
+  const historyEn = document.getElementById("history-eng");
+  const historyJp = document.getElementById("history-jp");
 
   let current = null;
 
@@ -19,17 +25,50 @@ window.addEventListener("DOMContentLoaded", () => {
     el.style.fontSize = size + "px";
 
     while (el.scrollWidth > el.clientWidth && size > minSize) {
-      size--;
+      size -= 1;
       el.style.fontSize = size + "px";
     }
   }
 
-  const jpEl = document.getElementById("question-jp");
-  const enEl = document.getElementById("question-en");
+  function showWord() {
+    current = pickWord();
 
-  current = pickWord();
-  jpEl.textContent = current.jp;
-  enEl.textContent = current.en;
+    enEl.textContent = current.en;
+    jpEl.textContent = current.jp;
 
-  fitText(enEl, 48, 20);
+    fitText(enEl, 48, 20);
+    fitText(jpEl, 32, 16);
+
+    answerEl.value = "";
+    resultEl.textContent = "";
+    answerEl.focus();
+  }
+
+  function judge() {
+    if (!current) return;
+
+    const input = answerEl.value.trim().toLowerCase();
+    const correct = current.en.toLowerCase();
+
+    if (input === correct) {
+      resultEl.textContent = "正解";
+    } else {
+      resultEl.textContent = `正解：${current.en}`;
+    }
+
+    historyEn.textContent = current.en;
+    historyJp.textContent = current.jp;
+
+    setTimeout(showWord, 900);
+  }
+
+  checkBtn.addEventListener("click", judge);
+
+  answerEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      judge();
+    }
+  });
+
+  showWord();
 });
