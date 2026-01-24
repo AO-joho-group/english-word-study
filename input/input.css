@@ -1,80 +1,64 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  width: 100vw;
+  margin: 0;
   height: 100vh;
   font-family: sans-serif;
-  overflow: hidden;
 }
 
-/* ===== 単語表示エリア ===== */
+/* 単語表示 */
 #word-area {
-  position: fixed;
-  top: 20%;
+  position: absolute;
+  top: 25%;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
+  width: 90%;
   text-align: center;
 }
 
-/* 英語（上） */
 #question-en {
-  font-size: 3.2rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: bold;
   white-space: nowrap;
-  overflow: hidden;
 }
 
-/* 日本語（下） */
 #question-jp {
+  font-size: 1.8rem;
+  color: #555;
   margin-top: 1vh;
-  font-size: 2.2rem;
-  color: #444;
   white-space: nowrap;
-  overflow: hidden;
 }
 
-/* ===== 入力エリア（完全固定） ===== */
+/* 入力エリア */
 #input-area {
-  position: fixed;
-  bottom: 96px; /* 履歴バー分を避ける */
+  position: absolute;
+  top: 55%;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 480px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2vh;
+  width: 80%;
+  text-align: center;
 }
 
 #answer {
-  width: 66%;
-  font-size: 1.5rem;
+  width: 100%;
+  font-size: 1.4rem;
   padding: 0.8rem;
-  text-align: center;
 }
 
 #check {
-  font-size: 1.5rem;
-  padding: 0.7rem 3rem;
-  background: #2a4d9b;
-  color: #fff;
-  border: none;
+  margin-top: 1vh;
+  font-size: 1.2rem;
+  padding: 0.6rem 2rem;
 }
 
 #result {
-  min-height: 1.4em; /* 表示切替でもズレない */
-  font-size: 1.3rem;
-  font-weight: bold;
+  margin-top: 0.8vh;
+  min-height: 1.2em;
 }
 
-/* ===== 履歴（最下部固定） ===== */
+/* 下固定履歴 */
 #history {
   position: fixed;
   bottom: 0;
