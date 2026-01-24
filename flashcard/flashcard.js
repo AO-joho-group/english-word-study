@@ -45,3 +45,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 render();
+
+document.getElementById("next").addEventListener("click", next);
+document.getElementById("prev").addEventListener("click", prev);
+
