@@ -42,18 +42,17 @@ body {
   text-align: center;
 }
 
-/* 英語（上） */
 #question-en {
   font-weight: 800;
   white-space: nowrap;
-  /* 端末幅に応じてスケール */
   font-size: clamp(20px, 6vw, 42px);
   line-height: 1.15;
+
+  margin-top: 5px;   /* ← ★ ここで5px下に移動 */
 }
 
-/* 日本語（下） */
 #question-jp {
-  margin-top: 1vh;
+  margin-top: calc(1vh + 5px); /* ← 元の位置 + 5px */
   color: #444;
   white-space: nowrap;
   font-size: clamp(16px, 4.5vw, 28px);
