@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta name="format-detection" content="telephone=no">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>入力形式</title>
@@ -15,14 +16,18 @@
   </div>
 
   <!-- 入力エリア（固定） -->
-  <div id="input-area">
+  <div id="input-area">    
     <input
       id="answer"
       type="text"
       placeholder="英単語を入力"
       autocomplete="off"
-    >
-    <button id="check">判定</button>
+      autocapitalize="off"
+      autocorrect="off"
+      spellcheck="false"
+      inputmode="latin"
+    />
+    ton id="check">判定</button>
     <div id="result"></div>
   </div>
 
