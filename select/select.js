@@ -1,11 +1,8 @@
-// 単語データ（例：最低限）
-const words = [
-  { eng: "apple", jp: "りんご" },
-  { eng: "run", jp: "走る" },
-  { eng: "blue", jp: "青い" },
-  { eng: "book", jp: "本" },
-  { eng: "eat", jp: "食べる" }
-];
+// words.js で words が定義されている前提
+if (typeof words === "undefined") {
+  alert("words.js が読み込まれていません");
+}
+
 
 const questionEl = document.getElementById("question");
 const choicesEl = document.getElementById("choices");
@@ -65,6 +62,14 @@ function judge(answer) {
     overlayEl.style.display = "none";
     showQuestion();
   }, 800);
+}
+
+const backBtn = document.getElementById("backBtn");
+
+if (backBtn) {
+  backBtn.addEventListener("click", () => {
+    history.back();
+  });
 }
 
 // 初期化
