@@ -1,18 +1,18 @@
 /* 共通ボタンスタイル */
 .common-btn {
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: 10px;
+  left: 10px;
 
   padding: 10px 18px;
   font-size: 16px;
   font-weight: 600;
 
-  background: 	#FFC800/*#fff*/;
+  background: #fff;
   color: #333;
 
-  border: 2px solid 	#FFC800/*#333*/;
-  border-radius: 0;
+  border: 2px solid #333;
+  border-radius: 8px; /* ← 角を取る（丸くする） */
 
   cursor: pointer;
 }
