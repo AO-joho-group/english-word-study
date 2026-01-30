@@ -1,42 +1,23 @@
-/* =========================
-   Back button (common)
-   ========================= */
-
-.btn-back {
+/* 共通ボタンスタイル */
+.common-btn {
   position: fixed;
   top: 16px;
   left: 16px;
 
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 1.2;
-  font-family: sans-serif;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
 
-  background: #ffffff;
-  color: #444444;
+  background: #fff;
+  color: #333;
 
-  border: 1.5px solid #444444;
-  border-radius: 6px;
+  border: 2px solid #333;
+  border-radius: 0;
 
   cursor: pointer;
-
-  z-index: 100;
 }
 
-/* 押下時の視覚フィードバック */
-.btn-back:active {
+/* ホバー時の軽い反応 */
+.common-btn:hover {
   background: #f2f2f2;
-}
-
-/* フォーカス時（キーボード操作対策） */
-.btn-back:focus {
-  outline: none;
-}
-
-/* タップ誤爆防止のため小さすぎない */
-@media (max-width: 480px) {
-  .btn-back {
-    padding: 10px 14px;
-    font-size: 15px;
-  }
 }
